@@ -1,0 +1,25 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container-fluid">
+    <%= link_to "Simple Airbnb", flats_path, class:"navbar-brand"%>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <%= link_to "Add a new flat", new_flat_path, class:"nav-link active"%>
+        </li>
+      </ul>
+
+    <%# <form class="d-flex" action="/search" method="get">
+      <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+      <button class="btn btn-outline-success" type="submit">Search</button>
+    </form> %>
+    <%= simple_form_for :search, url: flats_path, method: "GET", html: { class: 'd-flex p-1s' } do |f| %>
+      <% if @search.present? %>
+        <%= f.input :name, input_html: {value: @search[:name]}, class:"form-control me-2", label: false %>
+      <% else %>
+        <%= f.input :name, input_html: {value: ""}, class:"form-control me-2", label: false %>
+      <% end %>
+      <%= f.submit "Search", class: "btn btn-outline-success" %>
+    <% end %>
+    </div>
+  </div>
+</nav>

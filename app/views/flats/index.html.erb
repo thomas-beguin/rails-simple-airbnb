@@ -1,0 +1,30 @@
+<div class="container mt-3">
+  <h1>All our Flats</h1>
+  <p>All <%= @flats.count %> flats</p>
+
+  <div class="row">
+    <% @flats.each do |flat| %>
+    <div class="col-md-4 mb-3">
+      <div class="card h-100 " >
+        <%= link_to flat_path(flat), class:'text-decoration-none text-black' do %>
+          <% if flat.url_img.nil? %>
+            <%= image_tag("hernan-lucio-gJFvHkUHdSI-unsplash.jpg", class:"card-img-top", style:"height:300px; object-fit:cover")%>
+          <% else %>
+            <%= image_tag( "#{flat.url_img}", class:"card-img-top", style:"height:300px; object-fit:cover")%>
+          <% end %>
+          <div class="card-body">
+            <h5><%= flat.name %></h5>
+            <p><%= flat.address %></p>
+            <div class="d-flex">
+              <p class="p-1"><strong><%= flat.price_per_night %>€</strong></p>
+              <p class="p-1"><strong><%= flat.number_of_guests %>pers</strong></p>
+            </div>
+            <span><%= link_to "edit", edit_flat_path(flat), class:"btn" %></span>
+            <span><%= link_to "delete", flat_path(flat), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class:"btn" %></span>
+          </div>
+        <% end %>
+      </div>
+    </div>
+    <% end %>
+  </div>
+</div>

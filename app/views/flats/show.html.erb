@@ -1,0 +1,40 @@
+
+<div class="show-container">
+  <div class="banner-img">
+    <% if @flat.url_img.nil? %>
+      <%= image_tag("hernan-lucio-gJFvHkUHdSI-unsplash.jpg", class:"w-100", style:"height:300px; object-fit:cover")%>
+    <% else %>
+      <%= image_tag( "#{@flat.url_img}", class:"w-100", style:"height:300px; object-fit:cover")%>
+    <% end %>
+  </div>
+
+  <div class="container margin-negative">
+    <div class="row">
+      <div class="col-8">
+        <div class="card-body bg-light rounded mb-3">
+          <h4><%= @flat.name %></h4>
+          <p><%= @flat.address %></p>
+        </div>
+
+        <div class="card-body bg-light rounded mb-3">
+          <h4>A bit more about this flat...</h4>
+          <p><%= @flat.description %></p>
+        </div>
+      </div>
+      <div class="col-4">
+        <div class="card-body bg-light rounded mb-3">
+            <h5>Book this place</h5>
+            <%= %>
+        </div>
+
+        <div class="card-body bg-light rounded mb-3">
+            <h5>Details</h5>
+        </div>
+
+        <div class="card-body bg-light rounded mb-3">
+            <p>Share</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
